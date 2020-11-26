@@ -20,7 +20,7 @@
 .menu a {
 	color: white;
 	text-decoration: none;
-	padding: 0 0px 0 0;
+	padding: 0 0 0 0;
 	font-size: 30px;
 	font-family: helvetica;
 	transition: 0.4s;
@@ -55,13 +55,11 @@
 }
 
 .content {
-	padding: 0 20px;
+	padding: 0 0;
 }
 
 .content img {
-	width: 100%;
 	width: 100vw;
-	position: center;
 	margin: 0 0 0 0;
 }
 

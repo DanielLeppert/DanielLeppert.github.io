@@ -7,7 +7,7 @@
 
 .header {
 	height: 120px;
-	width: 40% ;
+	width: 100vw ;
 	background: #68246D;
 	margin: 0 0 0 0;
 	color: white;
@@ -55,6 +55,12 @@
 	z-index: -1111
 }
 
+.content img {
+	width: 100%;
+	width: 100vw;
+	position: center;
+	margin: 0 0 0 0;
+}
 
 .content {
 	width: 100vw;

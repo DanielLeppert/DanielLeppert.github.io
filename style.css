@@ -55,12 +55,9 @@
 	z-index: -1111
 }
 
-.image{
-	width:100vw;
-	margin: 0 0 0 0;
-}
 
 .content {
+	width: 100vw;
 	padding: 0 0 0 0;
 }
 

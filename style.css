@@ -60,9 +60,9 @@
 
 .content img {
 	width: 100%;
-	max-width: 600px;
+	width: 100vw;
 	position: center;
-	margin: 50px 0 50px 0;
+	margin: 0 0 0 0;
 }
 
 .content p {

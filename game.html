@@ -6,6 +6,13 @@
   <link rel="stylesheet" href="styles.css">
   <script src="script.js" type="module"></script>
   <title>ConnectFields v0.1</title>
+   <script>
+    // When the user clicks on <div>, open the popup
+    function startPopup() {
+      var popup = document.getElementById("help");
+      popup.classList.toggle("show");
+    }
+   </script>
 </head>
 <body>
   <h3 class="title">ConnectFields</h3>
@@ -14,8 +21,8 @@
   </div>
   <div class="board"></div>
   <div class="board"></div>
-  <div class="popup" onclick="startpopup()">help
-    <span class="popuptext" id="myPopup">
+  <div class="popup" onclick="startPopup()">help
+    <span class="popuptext" id="help">
     Earn a £ bonus for each retired tile (green) you connect - including your fellow farmer's. 
     Retired tiles do not reward yield. The number on each tile is the yield.</span>
   </div>

@@ -10,7 +10,7 @@ board.forEach(row => {
     row.forEach(tile => {
       bonusText.textContent = yieldCount(board)
       boardElement.append(tile.element)
-      tile.element.addEventListener("touchstart", () => {
+      tile.element.addEventListener("click", () => {
         markTile(board, tile)
       })
       tile.element.addEventListener("contextmenu", e => {

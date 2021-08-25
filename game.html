@@ -13,8 +13,21 @@
     profit: <span data-bonus-count></span>
   </div>
   <div class="board"></div>
+  <div class="board"></div>
+  <div class="popup" onclick="myFunction()">help
+    <span class="popuptext" id="myPopup">
+    Earn a £ bonus for each retired tile (green) you connect - including your fellow farmer's. 
+    Retired tiles do not reward yield. The number on each tile is the yield.</span>
+  </div>
   <div class="masthead">a
     <a href="mailto:daniel.j.leppert@durham.ac.uk.com">
       daniel leppert</a> production</div>
+  <script>
+    // When the user clicks on <div>, open the popup
+    function myFunction() {
+      var popup = document.getElementById("myPopup");
+      popup.classList.toggle("show");
+    }
+    </script>
 </body>
 </html>

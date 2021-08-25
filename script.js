@@ -6,6 +6,12 @@ const board = createBoard(BOARD_SIZE)
 const boardElement = document.querySelector(".board")
 const bonusText = document.querySelector("[data-bonus-count]")
 
+    // When the user clicks on <div>, open the popup
+    function startpopup() {
+      var popup = document.getElementById("myPopup");
+      popup.classList.toggle("show");
+    }
+
 board.forEach(row => {
     row.forEach(tile => {
       bonusText.textContent = yieldCount(board)

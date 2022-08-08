@@ -111,7 +111,8 @@ export function createBoard(boardSize) {
             }
             if (board[x + dir_x[neighbor]][y + dir_y[neighbor]].status === TILE_STATUSES.RETIRED &&
               visited[x + dir_x[neighbor]][y + dir_y[neighbor]] != 1) {  // if neighbor is retired, add count +1
-							visited[x + dir_x[neighbor]][y + dir_y[neighbor]] = 1;
+							
+	      visited[x + dir_x[neighbor]][y + dir_y[neighbor]] = 1;
               count++;
               }
           

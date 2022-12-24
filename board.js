@@ -76,7 +76,7 @@ export function createBoard(boardSize) {
   }
 
  // need to fix this to only count connected tiles
- export function bonusCount(board) {
+ export function bonusCount(board, player) {
 
   let count = 0
   var dir_x = [1, 0, -1, 0]
@@ -202,7 +202,7 @@ export function createBoard(boardSize) {
   var maxProfit = bonusCount(board) + yieldCount(board)
   for (let x = 0; x < 10; x++) {
     for (let y = 0; y < 10; y++) {
-      if (Profits[x][y] >= maxProfit) {
+      if (Profits[x][y] >= maxProfit && x > 4) {
 
         maxProfit = Profits[x][y]
         var x_coord = x

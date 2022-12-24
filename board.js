@@ -202,7 +202,7 @@ export function createBoard(boardSize) {
   var maxProfit = bonusCount(board) + yieldCount(board)
   for (let x = 0; x < 10; x++) {
     for (let y = 0; y < 10; y++) {
-      if (Profits[x][y] >= maxProfit && y > 4) {
+      if (Profits[x][y] >= maxProfit) {
 
         maxProfit = Profits[x][y]
         var x_coord = x

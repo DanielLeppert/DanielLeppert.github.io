@@ -14,7 +14,7 @@ const bonusText = document.querySelector("[data-bonus-count]")
 
 board.forEach(row => {
     row.forEach(tile => {
-      bonusText.textContent = yieldCount(board)
+      bonusText.textContent = yieldCount(board, 1)
       boardElement.append(tile.element)
       tile.element.addEventListener("click", () => {
         markTile(board, tile)
@@ -23,7 +23,7 @@ board.forEach(row => {
         e.preventDefault()
         markTile(tile)
         AImax(board)
-        bonusText.textContent = yieldCount(board) + bonusCount(board)
+        bonusText.textContent = yieldCount(board, 1) + bonusCount(board, 1)
       })
     })
   })

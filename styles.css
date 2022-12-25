@@ -95,8 +95,11 @@
 
   .help {
       color: black;
+      margin: auto;
       font-size: 1rem;
-}
+      font-stretcc: expanded;
+      font-family: Verdana;
+    }
 
   .masthead {
     color: white;

@@ -167,7 +167,7 @@ return count;
     [0,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,0,0]
   ]
-  
+  // fix values
   for (let x = 0; x < 10; x++) {
     for (let y = 0; y < 10; y++) {
       if (board[x][y].status === TILE_STATUSES.HUMANlow ||
@@ -176,11 +176,11 @@ return count;
       }
       else if (board[x][y].status === TILE_STATUSES.HUMANmedium ||
           board[x][y].status === TILE_STATUSES.AImedium ) {
-      Yields[x][y] = 2
+      Yields[x][y] = 1
       }
       else if (board[x][y].status === TILE_STATUSES.HUMANhigh ||
         board[x][y].status === TILE_STATUSES.AIhigh) {
-        Yields[x][y] = 3
+        Yields[x][y] = 1
       }
       else {
         Yields[x][y] = 0

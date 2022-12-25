@@ -123,23 +123,23 @@ export function createBoard(boardSize) {
 	           
 	else {
 	   
-		for (let y = 9; y = 0; y--) {
+		for (let y = 9; y > -1; y--) {
 
 		    if ((y > 4 && board[x][y].status === TILE_STATUSES.RETIRED) || (y <= 4 && board[x][y].status === TILE_STATUSES.RETIRED && visited[x][y] === 1)) {
 
-			    for (let neighbor = 0; neighbor < 4; neighbor++ ) {
+			    for (let neighbor = 0; neighbor < 4; neighbor++) {
 
-                    if (x + dir_x[neighbor] < 0 || y + dir_y[neighbor] < 0 ||
-                        x + dir_x[neighbor] > 9 || y + dir_y[neighbor] > 9)
-                        {
-                        continue;
-                        }
-                    if (board[x + dir_x[neighbor]][y + dir_y[neighbor]].status === TILE_STATUSES.RETIRED &&
-                    visited[x + dir_x[neighbor]][y + dir_y[neighbor]] != 1) {  // if neighbor is retired, add count +1
+				    if (x + dir_x[neighbor] < 0 || y + dir_y[neighbor] < 0 || x + dir_x[neighbor] > 9 || y + dir_y[neighbor] > 9) {
+					
+					    continue;
+				    }
+				    
+				    else if (board[x + dir_x[neighbor]][y + dir_y[neighbor]].status === TILE_STATUSES.RETIRED &&
+				    visited[x + dir_x[neighbor]][y + dir_y[neighbor]] != 1) {  // if neighbor is retired, add count +1
 
-                    visited[x + dir_x[neighbor]][y + dir_y[neighbor]] = 1;
-                    count++;
-                    }
+					    visited[x + dir_x[neighbor]][y + dir_y[neighbor]] = 1;
+					    count++;
+				    }
                 }
             }
         }
@@ -174,11 +174,11 @@ return count;
         board[x][y].status === TILE_STATUSES.AIlow ) {
       Yields[x][y] = 1
       }
-      if (board[x][y].status === TILE_STATUSES.HUMANmedium ||
+      else if (board[x][y].status === TILE_STATUSES.HUMANmedium ||
           board[x][y].status === TILE_STATUSES.AImedium ) {
       Yields[x][y] = 2
       }
-      if (board[x][y].status === TILE_STATUSES.HUMANhigh ||
+      else if (board[x][y].status === TILE_STATUSES.HUMANhigh ||
         board[x][y].status === TILE_STATUSES.AIhigh) {
         Yields[x][y] = 3
       }
@@ -195,11 +195,11 @@ return count;
       		count = count + Yields[x][y]
 	}
     }
-	else {
-		for (let y = 5; y < 10; y++) {
-			count = count + Yields[x][y]
-		}
-  }
+    else {
+	for (let y = 5; y < 10; y++) {
+		count = count + Yields[x][y]
+	}
+    }
 }
 return count
 }

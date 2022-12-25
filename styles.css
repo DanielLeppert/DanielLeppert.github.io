@@ -93,6 +93,11 @@
     cursor:not-allowed;
   }
 
+  .help {
+      color: black;
+      font-size: 1rem;
+}
+
   .masthead {
     color: white;
     font-size: 1rem;

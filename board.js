@@ -96,29 +96,58 @@ export function createBoard(boardSize) {
   ]
   
   for (let x = 0; x < 10; x++) {
+    // player = 1, AI = 0  
+    if (player === 1) {
  
-    for (let y = 0; y < 10; y++) {
+	    for (let y = 0; y < 10; y++) {
+              // second condition to ensure parcels on opponents side only counted if connected to player's
+	      if ((y <= 4 && board[x][y].status === TILE_STATUSES.RETIRED) || (y > 4 && board[x][y].status === TILE_STATUSES.RETIRED && visited[x][y] === 1)) 
+	      {
 
-      if (board[x][y].status === TILE_STATUSES.RETIRED) 
-      {
-             
-        for (let neighbor = 0; neighbor < 4; neighbor++ ) {
+		for (let neighbor = 0; neighbor < 4; neighbor++ ) {
 
-          if (x + dir_x[neighbor] < 0 || y + dir_y[neighbor] < 0 ||
-            x + dir_x[neighbor] > 9 || y + dir_y[neighbor] > 9)
-            {
-              continue;
-            }
-            if (board[x + dir_x[neighbor]][y + dir_y[neighbor]].status === TILE_STATUSES.RETIRED &&
-              visited[x + dir_x[neighbor]][y + dir_y[neighbor]] != 1) {  // if neighbor is retired, add count +1
-							
-	      visited[x + dir_x[neighbor]][y + dir_y[neighbor]] = 1;
-              count++;
-              }
-          
-        } 
-      } 
+		  if (x + dir_x[neighbor] < 0 || y + dir_y[neighbor] < 0 ||
+		    x + dir_x[neighbor] > 9 || y + dir_y[neighbor] > 9)
+		    {
+		      continue;
+		    }
+		    if (board[x + dir_x[neighbor]][y + dir_y[neighbor]].status === TILE_STATUSES.RETIRED &&
+		      visited[x + dir_x[neighbor]][y + dir_y[neighbor]] != 1) {  // if neighbor is retired, add count +1
+
+		      visited[x + dir_x[neighbor]][y + dir_y[neighbor]] = 1;
+		      count++;
+		      }
+
+		} 
+	      } 
+	    }
     }
+	  else {
+	   
+		  for (let y = 9; y = 0; y--) {
+
+		      if ((y > 4 && board[x][y].status === TILE_STATUSES.RETIRED) || (y <= 4 && board[x][y].status === TILE_STATUSES.RETIRED && visited[x][y] === 1)) {
+
+			for (let neighbor = 0; neighbor < 4; neighbor++ ) {
+
+			  if (x + dir_x[neighbor] < 0 || y + dir_y[neighbor] < 0 ||
+			    x + dir_x[neighbor] > 9 || y + dir_y[neighbor] > 9)
+			    {
+			      continue;
+			    }
+			    if (board[x + dir_x[neighbor]][y + dir_y[neighbor]].status === TILE_STATUSES.RETIRED &&
+			      visited[x + dir_x[neighbor]][y + dir_y[neighbor]] != 1) {  // if neighbor is retired, add count +1
+
+			      visited[x + dir_x[neighbor]][y + dir_y[neighbor]] = 1;
+			      count++;
+			      }
+
+			} 
+		      } 
+		    }
+                  }	  
+	  }
+	  
   }
   return count;
  }
@@ -126,7 +155,7 @@ export function createBoard(boardSize) {
 
  
 
- export function yieldCount(board) {
+ export function yieldCount(board, player) {
   
   var Yields = [
     [0,0,0,0,0,0,0,0,0,0],
@@ -163,9 +192,15 @@ export function createBoard(boardSize) {
  
   var count = 0
   for (let x = 0; x < 10; x++) {
-    for (let y = 0; y < 10; y++) {
-      count = count + Yields[x][y]
+    if (player === 1) {
+    	for (let y = 0; y <= 4; y++) {
+      		count = count + Yields[x][y]
+	}
     }
+	else {
+		for (let y = 5; y < 10; y++) {
+			count = count + Yields[x][y]
+		}
   }
   return count
  }
@@ -173,7 +208,7 @@ export function createBoard(boardSize) {
 
 
  export function AImax(board) {
-
+ // profit maximization function for the AI
   var Profits = [
     [0,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,0,0],
@@ -194,12 +229,12 @@ export function createBoard(boardSize) {
 
       _board[x][y].status = TILE_STATUSES.RETIRED
 
-      Profits[x][y] = bonusCount(_board) + yieldCount(_board) 
+      Profits[x][y] = bonusCount(_board, 0) + yieldCount(_board, 0) 
     
     }
   }
   console.log(Profits)
-  var maxProfit = bonusCount(board) + yieldCount(board)
+  var maxProfit = bonusCount(board, 0) + yieldCount(board, 0)
   for (let x = 0; x < 10; x++) {
     for (let y = 0; y < 10; y++) {
       if (Profits[x][y] >= maxProfit && y > 4) {

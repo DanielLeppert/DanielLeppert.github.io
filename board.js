@@ -176,11 +176,11 @@ return count;
       }
       else if (board[x][y].status === TILE_STATUSES.HUMANmedium ||
           board[x][y].status === TILE_STATUSES.AImedium ) {
-      Yields[x][y] = 1
+      Yields[x][y] = 2
       }
       else if (board[x][y].status === TILE_STATUSES.HUMANhigh ||
         board[x][y].status === TILE_STATUSES.AIhigh) {
-        Yields[x][y] = 1
+        Yields[x][y] = 3
       }
       else {
         Yields[x][y] = 0
@@ -234,14 +234,17 @@ return count
   console.log(Profits)
   var maxProfit = bonusCount(board, 0) + yieldCount(board, 0)
   for (let x = 0; x < 10; x++) {
-    for (let y = 0; y < 10; y++) {
-      if (Profits[x][y] >= maxProfit && y > 4) {
+    for (let y = 5; y < 10; y++) {
+      if (Profits[x][y] >= maxProfit) {
 
         maxProfit = Profits[x][y]
         var x_coord = x
         var y_coord = y
       
       }
+     else {
+     	continue;
+     }
     }
   }
   console.log(maxProfit)

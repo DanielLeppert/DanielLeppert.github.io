@@ -22,8 +22,8 @@ board.forEach(row => {
       tile.element.addEventListener("contextmenu", e => {
         e.preventDefault()
         markTile(tile)
-        AImax(board)
         bonusText.textContent = yieldCount(board, 1) + bonusCount(board, 1)
+        AImax(board)        
       })
     })
   })

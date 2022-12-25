@@ -124,11 +124,11 @@
 .popup .popuptext {
   visibility: hidden;
   font-size: .5rem;
-  width: 260px;
+  width: 160px;
   background-color: #555;
   color: #fff;
   text-align: center;
-  border-radius: 6px;
+  border-radius: 20px;
   padding: 5px 0;
   position: absolute;
   z-index: 1;

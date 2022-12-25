@@ -97,8 +97,8 @@
       color: black;
       margin: auto;
       text-align: justify;
-      width = 50%;
-      font-size: 1rem;
+      margin: 50%;
+      font-size: 24px;
       font-stretch: expanded;
       font-family: Verdana;
     }

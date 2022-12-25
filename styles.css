@@ -115,9 +115,10 @@
   position: relative;
   display: inline-block;
   cursor: pointer;
-  font-family: Arial;
-  font-size: 1.3rem;
-  color: red;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-family: Consolas;
+  -webkit-text-stroke: 1px rgb(63, 63, 63);
 }
 
 /* The actual popup (appears on top) */

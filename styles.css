@@ -96,8 +96,10 @@
   .help {
       color: black;
       margin: auto;
+      text-align: justify;
+      width = 50%;
       font-size: 1rem;
-      font-stretcc: expanded;
+      font-stretch: expanded;
       font-family: Verdana;
     }
 

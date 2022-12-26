@@ -95,10 +95,9 @@
 
   .help {
       color: black;
-      margin: auto;
       text-align: justify;
       margin: 50%;
-      font-size: 24px;
+      font-size: 14px;
       font-stretch: expanded;
       font-family: Verdana;
     }

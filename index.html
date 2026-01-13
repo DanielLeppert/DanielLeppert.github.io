@@ -13,7 +13,14 @@
       max-width: 1200px;
     }
 
-    .image,
+    .float-image {
+        float: left;              /* Push image to the left */
+        margin: 0 15px 15px 0;    /* Space around the image */
+        width: 200px;             /* Fixed width for consistency */
+        height: auto;             /* Keep aspect ratio */
+        border-radius: 8px;       /* Optional rounded corners */
+    }
+
     .text {
       width: 50%;               /* equal halves */
       box-sizing: border-box;
@@ -58,7 +65,7 @@
 
 <div class="container">
     <div class="image">
-      <img src="IMG-20260109-WA0002.jpg" alt="Graduation" width="400" height="550">
+      <img src="IMG-20260109-WA0002.jpg" class="float-image" alt="Graduation" width="400" height="550">
     </div>
     <div class="text">
       
@@ -78,6 +85,7 @@
 
 </body>
 </html>
+
 
 
 

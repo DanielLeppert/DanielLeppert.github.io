@@ -73,7 +73,7 @@
 	text-align: left;
 	padding: 0 20px 0 20px;
 	postion: center;
-	font-size: 20px;
+	font-size: 5vw;
 	font-family: helvetica;
 	color: #695E6B;
 }
@@ -129,5 +129,6 @@ accurately both on small and large screens */
     	right: 0;
     }
 }
+
 
 

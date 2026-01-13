@@ -70,7 +70,7 @@
 	
 
 .text p {
-	text-align: justify;
+	text-align: left;
 	padding: 0 20px 0 20px;
 	postion: center;
 	font-size: 20px;
@@ -129,4 +129,5 @@ accurately both on small and large screens */
     	right: 0;
     }
 }
+
 

@@ -14,7 +14,7 @@
 }
 
 .menu {
-	float: left;
+	float: center;
 	line-height: 120px;
 }
 
@@ -129,6 +129,7 @@ accurately both on small and large screens */
     	right: 0;
     }
 }
+
 
 
 

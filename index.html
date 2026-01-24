@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Professional Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .social-links a:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        main {
+            max-width: 900px;
+            margin: 2rem auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #667eea;
+        }
+
+        h3 {
+            color: #764ba2;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        ul {
+            margin-left: 2rem;
+            margin-top: 0.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .education-item {
+            margin-top: 1rem;
+        }
+
+        .education-item strong {
+            color: #667eea;
+        }
+
+        /* About Me Section with Photo */
+        .about-section {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+        }
+
+        .profile-photo {
+            flex-shrink: 0;
+            width: 200px;
+            height: 200px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-content {
+            flex: 1;
+        }
+
+        .about-content p {
+            margin-bottom: 1rem;
+        }
+
+        /* Research Projects Styles */
+        .project-links {
+            list-style: none;
+            margin-left: 0;
+            margin-top: 1rem;
+        }
+
+        .project-links li {
+            margin-bottom: 1rem;
+        }
+
+        .project-link {
+            color: #667eea;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: color 0.3s;
+            display: inline-block;
+        }
+
+        .project-link:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.6);
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 700px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            animation: slideIn 0.3s;
+            position: relative;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 20px;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #667eea;
+        }
+
+        .modal-content h3 {
+            color: #667eea;
+            margin-top: 0;
+            margin-bottom: 1rem;
+            clear: both;
+        }
+
+        .modal-content img {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 8px;
+            margin: 1rem auto;
+            display: block;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .modal-content p {
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            main {
+                margin: 1rem;
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .about-section {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .profile-photo {
+                width: 150px;
+                height: 150px;
+            }
+
+            .modal-content {
+                margin: 10% 1rem;
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Daniel Leppert</h1>
+        <p class="tagline">PhD Economist at Oxera | Regulation, litigation & data consulting</p>
+        <div class="social-links">
+            <a href="cv.pdf">📄 Download CV</a>
+            <a href="https://github.com/yourusername">💻 GitHub</a>
+            <a href="https://linkedin.com/in/yourusername">💼 LinkedIn</a>
+            <a href="mailto:daniel.leppert.private@gmail.com">✉️ Email</a>
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <h2>About</h2>
+            <div class="about-section">
+                <div class="profile-photo">
+                    <img src="https://via.placeholder.com/200x200/667eea/ffffff?text=Your+Photo" alt="Profile Photo">
+                </div>
+                <div class="about-content">
+                <p>Daniel works as an economics consultant with Oxera Consulting LLP, based in their London office. 
+		   He uses economics and analytical tools, such as data science and causal inference methods, to provide solutions to a range of client 
+		   issues across various sectors and areas of expertise including transport, competition and energy. He is an experienced Python and R developer, 
+		   including for spatial analysis using geographic information systems (GIS).</p> <p>Before joining Oxera, Daniel was a research associate at Durham University 
+		   where he was awarded a PhD in economics in January 2026. During his PhD, Daniel collected, processed and analysed firm-level economic data to evaluate 
+		   sectoral responses to environmental regulation. His work on spatially differentiated risks faced by insurance companies and energy utilities has 
+		   been published in peer-reviewed journals and attracted funding from government and academic institutions. His thesis was awarded the <b>2026 Faculty of Business PhD Thesis Prize</b> at
+		   Durham University. Daniel's research was supervised by <a href="https://www.dur.ac.uk/research/directory/staff/?mode=staff&id=13489">Riccardo Scarpa</a> and 
+		 <a href="https://www.dur.ac.uk/research/directory/staff/?mode=staff&id=834">Ashar Aftab</a>.
+                </div>
+            </div>
+
+            <h3>Skills & Expertise</h3>
+            <ul>
+                <li><strong>Programming Languages:</strong> Python, JavaScript, R, C++</li>
+                <li><strong>Data Science:</strong> Experiments, causal inference, survey design, conjoint analysis, GIS</li>
+                <li><strong>Tools & Technologies:</strong> Git, ArcGIS Pro, Qualtrics, Tableau</li>
+            </ul>
+
+            <h3>Education</h3>
+            <div class="education-item">
+                <strong>Doctor of Philosophy in Economics</strong><br>
+                Durham University, 2026<br>
+                Focus: Environmental Economics, Discrete Choice Models
+            </div>
+
+            <h3>Published research</h3>
+            <ul class="project-links">
+                <li><a class="project-link" onclick="openModal('modal1')">Causal impact evaluation of federal US law against cross-border air pollution</a></li>
+                <li><a class="project-link" onclick="openModal('modal2')">Reduction of geographic basis risk for index insurance using spatial interpolation</a></li>
+            </ul>
+
+            <h3>Teaching material</h3>
+            <ul class="project-links">
+                <li><a class="project-link" onclick="openModal('modal3')">'Connect Fields' web browser game</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Modal 1 -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal1')">&times;</span>
+            <h3><a href="https://link.springer.com/article/10.1007/s10018-023-00367-z">“No fences make bad neighbors” but markets make better ones: cap-and-trade reduces cross-border SO2 in a natural experiment</a></h3>
+            <p>The clean air interstate rule (CAIR) was a regional cap-and-trade program announced in 2005 which covered 27 eastern US states and sought to reduce sulfur dioxide emissions from coal-fired power plants. The rule was later vacated after a court found that the non-targeted design of the program did not comply with the Clean Air Act provision to regulate interstate air pollution. Using a custom air pollution dispersion model, I calculate the interstate SO2 pollution from 493 coal-fired power plants across the United States between 1997 and 2020. In a difference-in-differences setup with plants not covered by CAIR in the control group, I estimate the treatment effect of the program on overall- and cross-border SO2 emissions and find a 24% reduction in overall emissions and reduces the risk that a plant violates air quality standards across state borders by 2–4%. I report evidence of heterogeneous treatment effects where the reduction in overall emissions attributed to CAIR is lower among plants transporting SO2 in excess of 1% of the National Air Quality Standards to another state.</p>
+            <img src="https://via.placeholder.com/600x400/667eea/ffffff?text=Neural+Network+Architecture" alt="Neural Network Visualization">
+        </div>
+    </div>
+
+    <!-- Modal 2 -->
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal2')">&times;</span>
+            <h3><a href="https://journals.ametsoc.org/view/journals/wcas/13/2/WCAS-D-20-0070.1.xml">Accounting for Geographic Basis Risk in Heat Index Insurance: How Spatial Interpolation Can Reduce the Cost of Risk</a></h3>
+            <p>Extreme heat events cause periodic damage to crop yields and may pose a threat to the income of farmers. Weather index insurance provides payouts to farmers in case of measurable weather extremes to keep production going. However, its viability depends crucially on the accuracy of local weather indices to predict yield damages from adverse weather conditions. So far extreme heat indices are poorly represented in weather index insurance. In this study we construct indices of extreme heat using observations at the nearest weather station and estimates for each county using three interpolation techniques: Inverse-distance weighting, ordinary kriging, and regression kriging. Applying these indices to insurance against heat damage to corn in Illinois and Iowa, we show that heat index insurance reduces relative risk premiums by 27-29% and that interpolated indices outperform the nearest-neighbor index by around 2-3% in terms of relative risk reduction. Further, we find that the advantage of interpolation over a nearest-neighbor index in terms of relative risk reduction increases as the sample of weather stations is reduced. These findings suggest that heat index insurance can work even when weather data is spatially sparse, which delivers important implications for insurance practice and policy makers. Further, our public code repository provides a rich toolbox of methods to be used for other, perils, crops and regions. Our results are therefore not only replicable but also constitute a cornerstone for projects to come.</p>
+            <img src="https://via.placeholder.com/600x400/764ba2/ffffff?text=Sentiment+Analysis+Dashboard" alt="Sentiment Analysis Visualization">
+        </div>
+    </div>
+
+    <!-- Modal 3 -->
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal3')">&times;</span>
+            <h3><a href="https://journals.ametsoc.org/view/journals/wcas/13/2/WCAS-D-20-0070.1.xml">'Connect Fields' web browser game</a></h3>
+            <p>This is a browser game I developed to help first-year students understand coordination bonuses in an engaging way. In the game, 
+    you manage one of two neighbouring farms participating in a payment-for-ecosystem services scheme (PES). Coordinate with the
+    AI managing the adjacent farm to maximise the sum of farm outputs and PES payments. Developed in Javascript and HTML.</p>
+        </div>
+    </div>
+
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modals = document.getElementsByClassName('modal');
+            for (let modal of modals) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            }
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const modals = document.getElementsByClassName('modal');
+                for (let modal of modals) {
+                    modal.style.display = 'none';
+                }
+                document.body.style.overflow = 'auto';
+            }
+        });
+    </script>
+</body>
+</html>
